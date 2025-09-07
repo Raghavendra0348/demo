@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bloomer - Coming Soon</title>
+        <link rel="preload" href="genty/GentyDemo-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
+        <link rel="preload" href="genty/GentyDemo-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+                body {
+                        font-family: 'Inter', sans-serif;
+                        background: linear-gradient(135deg, #f8fafc 0%, #e9d8fd 100%);
+                }
+
+                .gradient-text {
+                        background: linear-gradient(135deg, #7B4F8D 0%, #A87BC9 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                }
+
+                .coming-soon-text {
+                        font-size: clamp(3rem, 8vw, 8rem);
+                        line-height: 0.9;
+                        letter-spacing: -0.02em;
+                }
+
+                .pulse-glow {
+                        animation: pulseGlow 2s ease-in-out infinite alternate;
+                }
+
+                @keyframes pulseGlow {
+                        from {
+                                text-shadow: 0 0 20px rgba(123, 79, 141, 0.3);
+                        }
+
+                        to {
+                                text-shadow: 0 0 40px rgba(168, 123, 201, 0.5), 0 0 60px rgba(123, 79, 141, 0.2);
+                        }
+                }
+
+                .fade-in {
+                        animation: fadeIn 1s ease-out forwards;
+                        opacity: 0;
+                }
+
+                .fade-in-delay-1 {
+                        animation-delay: 0.3s;
+                }
+
+                .fade-in-delay-2 {
+                        animation-delay: 0.6s;
+                }
+
+                .fade-in-delay-3 {
+                        animation-delay: 0.9s;
+                }
+
+                @keyframes fadeIn {
+                        to {
+                                opacity: 1;
+                        }
+                }
+
+                .feature-card {
+                        background: white;
+                        border: 2px solid #e2e8f0;
+                        border-radius: 16px;
+                        padding: 32px 24px;
+                        text-align: center;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 16px -1px rgba(123, 79, 141, 0.08);
+                        position: relative;
+                        overflow: hidden;
+                }
+
+                .feature-card:hover {
+                        transform: translateY(-4px) scale(1.03);
+                        box-shadow: 0 20px 40px -5px rgba(123, 79, 141, 0.12);
+                        border-color: #a87bc9;
+                }
+
+                .feature-icon {
+                        font-size: 2.5rem;
+                        margin-bottom: 1rem;
+                        background: linear-gradient(135deg, #7B4F8D 0%, #A87BC9 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        display: inline-block;
+                }
+
+                @font-face {
+                        font-family: 'Genty';
+                        src: url('genty/GentyDemo-Regular.otf') format('opentype'),
+                                url('genty/GentyDemo-Regular.ttf') format('truetype');
+                        font-weight: 400;
+                        font-style: normal;
+                        font-display: swap;
+                }
+
+                /* Bold */
+                @font-face {
+                        font-family: 'Genty';
+                        src: url('genty/GentyDemo-Regular.otf') format('opentype'),
+                                url('genty/GentyDemo-Regular.ttf') format('truetype');
+                        font-weight: 700;
+                        font-style: normal;
+                        font-display: swap;
+                }
+
+                .navbar-brand {
+                        font-family: 'Genty';
+                        font-size: 3rem;
+                        font-weight: 700;
+                        color: #7B4F8D !important;
+                        letter-spacing: -2px;
+                        text-shadow: 0 2px 12px rgba(168, 123, 201, 0.08);
+                }
+        </style>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="w-full py-6 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto">
+                        <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+
+                                        <span style="font-family: Genty;" class="navbar-brand">Bloomer</span>
+                                </div>
+
+                                <nav class="hidden md:flex items-center space-x-8">
+                                        <a href="#about"
+                                                class="text-gray-600 hover:text-purple-600 transition-colors font-medium">About</a>
+                                        <a href="#contact"
+                                                class="text-gray-600 hover:text-purple-600 transition-colors font-medium">Contact</a>
+                                        <button
+                                                class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white px-6 py-2 rounded-lg font-medium transition-colors shadow-md">
+                                                Notify Me
+                                        </button>
+                                </nav>
+                        </div>
+                </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-5xl mx-auto">
+                        <!-- Coming Soon Text -->
+                        <h1 class="coming-soon-text font-black gradient-text pulse-glow mb-8 fade-in">
+                                COMING
+                                <br>
+                                SOON
+                        </h1>
+
+                        <!-- Subtitle -->
+                        <p
+                                class="text-xl sm:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed fade-in fade-in-delay-1">
+                                Bloomer is revolutionizing shopping with video-first experiences.
+                                <br class="hidden sm:block">
+                                Watch, swipe, and shop instantly from creators you trust.
+                        </p>
+
+                        <!-- Email Signup -->
+                        <div class="max-w-md mx-auto mb-16 fade-in fade-in-delay-2 glass p-6">
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                        <input type="email" placeholder="Enter your email"
+                                                class="flex-1 px-6 py-4 border-2 border-purple-100 rounded-xl focus:border-purple-500 focus:outline-none text-lg bg-white bg-opacity-80">
+                                        <button
+                                                class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors whitespace-nowrap shadow-md">
+                                                Get Notified
+                                        </button>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-3">Be the first to know when we launch!</p>
+                        </div>
+
+                        <!-- Features Preview - Cards -->
+                        <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto fade-in fade-in-delay-3">
+                                <div class="feature-card">
+                                        <div class="feature-icon"><i class="fas fa-video"></i></div>
+                                        <h3 class="font-bold text-gray-900 text-xl mb-3">Video Shopping</h3>
+                                        <p class="text-gray-600 leading-relaxed">
+                                                Watch authentic product demonstrations through short, engaging video
+                                                reels from trusted creators and sellers.
+                                        </p>
+                                </div>
+
+                                <div class="feature-card">
+                                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                                        <h3 class="font-bold text-gray-900 text-xl mb-3">Instant Buy</h3>
+                                        <p class="text-gray-600 leading-relaxed">
+                                                Purchase products with a single tap without leaving the video. Seamless
+                                                checkout experience in seconds.
+                                        </p>
+                                </div>
+
+                                <div class="feature-card">
+                                        <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                                        <h3 class="font-bold text-gray-900 text-xl mb-3">Trusted Creators</h3>
+                                        <p class="text-gray-600 leading-relaxed">
+                                                Shop with confidence through authentic recommendations from verified
+                                                creators and real user reviews.
+                                        </p>
+                                </div>
+                        </div>
+                </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 mt-20">
+                <div class="max-w-7xl mx-auto">
+                        <div class="grid md:grid-cols-4 gap-8 mb-8">
+                                <!-- Brand -->
+                                <div class="md:col-span-2">
+                                        <div class="flex items-center mb-4">
+
+                                                <span class="navbar-brand" style="font-family: genty;">Bloomer</span>
+                                        </div>
+                                        <p class="text-gray-600 mb-6 max-w-md">
+                                                The future of social commerce. Video-first shopping that's authentic,
+                                                fun, and instant.
+                                        </p>
+                                        <div class="flex space-x-4">
+                                                <a href="#"
+                                                        class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow text-purple-600 text-xl">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                                <a href="#"
+                                                        class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow text-pink-500 text-xl">
+                                                        <i class="fab fa-instagram"></i>
+                                                </a>
+                                                <a href="#"
+                                                        class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow text-blue-400 text-xl">
+                                                        <i class="fab fa-twitter"></i>
+                                                </a>
+                                        </div>
+                                </div>
+
+                                <!-- Links -->
+                                <div>
+                                        <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
+                                        <ul class="space-y-2">
+                                                <li><a href="#"
+                                                                class="text-gray-600 hover:text-purple-600 transition-colors">About</a>
+                                                </li>
+                                                <li><a href="#"
+                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Careers</a>
+                                                </li>
+                                                <li><a href="#"
+                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Press</a>
+                                                </li>
+                                        </ul>
+                                </div>
+
+                                <div>
+                                        <h4 class="font-semibold text-gray-900 mb-4">Support</h4>
+                                        <ul class="space-y-2">
+                                                <li><a href="#"
+                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Help</a>
+                                                </li>
+                                                <li><a href="#"
+                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Contact</a>
+                                                </li>
+                                                <li><a href="#"
+                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Privacy</a>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </div>
+
+                        <!-- Bottom -->
+                        <div
+                                class="border-t border-gray-200 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                                <p class="text-gray-500 text-sm">© 2025 Bloomer. All rights reserved.</p>
+                                <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                                        <span class="text-gray-500 text-sm">Launching on:</span>
+                                        <div class="flex space-x-2">
+                                                <span
+                                                        class="px-3 py-1 bg-white rounded-lg text-xs font-medium shadow-sm">📱
+                                                        iOS</span>
+                                                <span
+                                                        class="px-3 py-1 bg-white rounded-lg text-xs font-medium shadow-sm">🤖
+                                                        Android</span>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </footer>
+        <!-- Font Awesome for icons -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+        <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'97b41813513c851f',t:'MTc1NzIyNTk2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
