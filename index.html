@@ -2,298 +2,550 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bloomer - Coming Soon</title>
-        <link rel="preload" href="genty/GentyDemo-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
-        <link rel="preload" href="genty/GentyDemo-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <style>
-                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloomer - Video-First Shopping Experience</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <!-- ...existing code... -->
+    <link rel="preload" href="genty/GentyDemo-Regular.otf" as="font" type="font/otf" crossorigin="anonymous">
+    <link rel="preload" href="genty/GentyDemo-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-                body {
-                        font-family: 'Inter', sans-serif;
-                        background: linear-gradient(135deg, #f8fafc 0%, #e9d8fd 100%);
-                }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-                .gradient-text {
-                        background: linear-gradient(135deg, #7B4F8D 0%, #A87BC9 100%);
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        background-clip: text;
-                }
-
-                .coming-soon-text {
-                        font-size: clamp(3rem, 8vw, 8rem);
-                        line-height: 0.9;
-                        letter-spacing: -0.02em;
-                }
-
-                .pulse-glow {
-                        animation: pulseGlow 2s ease-in-out infinite alternate;
-                }
-
-                @keyframes pulseGlow {
-                        from {
-                                text-shadow: 0 0 20px rgba(123, 79, 141, 0.3);
-                        }
-
-                        to {
-                                text-shadow: 0 0 40px rgba(168, 123, 201, 0.5), 0 0 60px rgba(123, 79, 141, 0.2);
-                        }
-                }
-
-                .fade-in {
-                        animation: fadeIn 1s ease-out forwards;
-                        opacity: 0;
-                }
-
-                .fade-in-delay-1 {
-                        animation-delay: 0.3s;
-                }
-
-                .fade-in-delay-2 {
-                        animation-delay: 0.6s;
-                }
-
-                .fade-in-delay-3 {
-                        animation-delay: 0.9s;
-                }
-
-                @keyframes fadeIn {
-                        to {
-                                opacity: 1;
-                        }
-                }
-
-                .feature-card {
-                        background: white;
-                        border: 2px solid #e2e8f0;
-                        border-radius: 16px;
-                        padding: 32px 24px;
-                        text-align: center;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 4px 16px -1px rgba(123, 79, 141, 0.08);
-                        position: relative;
-                        overflow: hidden;
-                }
-
-                .feature-card:hover {
-                        transform: translateY(-4px) scale(1.03);
-                        box-shadow: 0 20px 40px -5px rgba(123, 79, 141, 0.12);
-                        border-color: #a87bc9;
-                }
-
-                .feature-icon {
-                        font-size: 2.5rem;
-                        margin-bottom: 1rem;
-                        background: linear-gradient(135deg, #7B4F8D 0%, #A87BC9 100%);
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        background-clip: text;
-                        display: inline-block;
-                }
-
-                @font-face {
-                        font-family: 'Genty';
-                        src: url('genty/GentyDemo-Regular.otf') format('opentype'),
-                                url('genty/GentyDemo-Regular.ttf') format('truetype');
-                        font-weight: 400;
-                        font-style: normal;
-                        font-display: swap;
-                }
-
-                /* Bold */
-                @font-face {
-                        font-family: 'Genty';
-                        src: url('genty/GentyDemo-Regular.otf') format('opentype'),
-                                url('genty/GentyDemo-Regular.ttf') format('truetype');
-                        font-weight: 700;
-                        font-style: normal;
-                        font-display: swap;
-                }
-
-                .navbar-brand {
-                        font-family: 'Genty';
-                        font-size: 3rem;
-                        font-weight: 700;
-                        color: #7B4F8D !important;
-                        letter-spacing: -2px;
-                        text-shadow: 0 2px 12px rgba(168, 123, 201, 0.08);
-                }
-        </style>
+    <!-- ...existing code... -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="index.css">
 </head>
 
-<body class="bg-white min-h-screen flex flex-col">
-        <!-- Header -->
-        <header class="w-full py-6 px-4 sm:px-6 lg:px-8">
-                <div class="max-w-7xl mx-auto">
-                        <div class="flex justify-between items-center">
-                                <div class="flex items-center">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bloomer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#download">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary rounded-pill px-3 ms-2" href="#download">Get
+                            Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-                                        <span style="font-family: Genty;" class="navbar-brand">Bloomer</span>
-                                </div>
+    <section class="coming">
+        <div class="container-coming">
+            <h1 class="coming-soon-text">
+                COMING SOON
+            </h1>
+            <p class="tagline">
+                Bloomer is revolutionizing shopping with video-first experiences.<br>
+                Watch, swipe, and shop instantly from creators you trust.
+            </p>
+            <form class="form">
+                <input type="email" placeholder="Enter your email" required>
+                <button class="get-notified-btn" type="submit">Get Notified</button>
+            </form>
+            <p class="note">Be the first to know when we launch!</p>
+        </div>
+    </section>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
 
-                                <nav class="hidden md:flex items-center space-x-8">
-                                        <a href="#about"
-                                                class="text-gray-600 hover:text-purple-600 transition-colors font-medium">About</a>
-                                        <a href="#contact"
-                                                class="text-gray-600 hover:text-purple-600 transition-colors font-medium">Contact</a>
-                                        <button
-                                                class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white px-6 py-2 rounded-lg font-medium transition-colors shadow-md">
-                                                Notify Me
-                                        </button>
-                                </nav>
+                <div class="row align-items-center">
+                    <!-- Left side text -->
+                    <div class="col-lg-6">
+                        <div class="hero-content">
+                            <h1 class="hero-title">Shop Through Stories</h1>
+                            <p class="hero-subtitle">The Future of Social Commerce</p>
+                            <p class="hero-description">
+                                Discover products through engaging video reels. Swipe, watch, and shop instantly in a
+                                fun, authentic, and trust-driven experience.
+                            </p>
+                            <div class="cta-buttons">
+                                <button class="btn btn-primary-custom" onclick="scrollToSection('download')">
+                                    <i class="fas fa-download me-2"></i>Download App
+                                </button>
+                                <button class="btn btn-outline-custom" onclick="scrollToSection('features')">
+                                    <i class="fas fa-play me-2"></i>Learn More
+                                </button>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- Right side: two phone mockups side by side -->
+                    <div class="col-lg-6 d-flex justify-content-center gap-3">
+                        <div class="phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-screen">
+                                    <img src="screen_shot.png" alt="App Screenshot 1" class="img-fluid rounded">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-screen">
+                                    <img src="screen_shot1.png" alt="App Screenshot 2" class="img-fluid rounded">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-        </header>
 
-        <!-- Main Content -->
-        <main class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-5xl mx-auto">
-                        <!-- Coming Soon Text -->
-                        <h1 class="coming-soon-text font-black gradient-text pulse-glow mb-8 fade-in">
-                                COMING
-                                <br>
-                                SOON
-                        </h1>
 
-                        <!-- Subtitle -->
-                        <p
-                                class="text-xl sm:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed fade-in fade-in-delay-1">
-                                Bloomer is revolutionizing shopping with video-first experiences.
-                                <br class="hidden sm:block">
-                                Watch, swipe, and shop instantly from creators you trust.
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <div class="section-badge mb-4">
+                        <span class="badge rounded-pill px-4 py-2"
+                            style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); color: white; font-size: 0.9rem; font-weight: 600;">FEATURES</span>
+                    </div>
+                    <h2 class="display-4 fw-bold mb-3"
+                        style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Why Choose <div style="font-family: Genty;"> Bloomer?</div>
+                    </h2>
+                    <p class="lead text-muted mb-0" style="max-width: 600px; margin: 0 auto;">Experience shopping like
+                        never before with our innovative features designed for the modern consumer</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="feature-title">Video-First Shopping</h3>
+                        <p class="feature-description">
+                            Browse products through engaging short video reels. See items in action before you buy.
                         </p>
-
-                        <!-- Email Signup -->
-                        <div class="max-w-md mx-auto mb-16 fade-in fade-in-delay-2 glass p-6">
-                                <div class="flex flex-col sm:flex-row gap-4">
-                                        <input type="email" placeholder="Enter your email"
-                                                class="flex-1 px-6 py-4 border-2 border-purple-100 rounded-xl focus:border-purple-500 focus:outline-none text-lg bg-white bg-opacity-80">
-                                        <button
-                                                class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors whitespace-nowrap shadow-md">
-                                                Get Notified
-                                        </button>
-                                </div>
-                                <p class="text-sm text-gray-500 mt-3">Be the first to know when we launch!</p>
-                        </div>
-
-                        <!-- Features Preview - Cards -->
-                        <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto fade-in fade-in-delay-3">
-                                <div class="feature-card">
-                                        <div class="feature-icon"><i class="fas fa-video"></i></div>
-                                        <h3 class="font-bold text-gray-900 text-xl mb-3">Video Shopping</h3>
-                                        <p class="text-gray-600 leading-relaxed">
-                                                Watch authentic product demonstrations through short, engaging video
-                                                reels from trusted creators and sellers.
-                                        </p>
-                                </div>
-
-                                <div class="feature-card">
-                                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                                        <h3 class="font-bold text-gray-900 text-xl mb-3">Instant Buy</h3>
-                                        <p class="text-gray-600 leading-relaxed">
-                                                Purchase products with a single tap without leaving the video. Seamless
-                                                checkout experience in seconds.
-                                        </p>
-                                </div>
-
-                                <div class="feature-card">
-                                        <div class="feature-icon"><i class="fas fa-user-check"></i></div>
-                                        <h3 class="font-bold text-gray-900 text-xl mb-3">Trusted Creators</h3>
-                                        <p class="text-gray-600 leading-relaxed">
-                                                Shop with confidence through authentic recommendations from verified
-                                                creators and real user reviews.
-                                        </p>
-                                </div>
-                        </div>
+                    </div>
                 </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="w-full py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 mt-20">
-                <div class="max-w-7xl mx-auto">
-                        <div class="grid md:grid-cols-4 gap-8 mb-8">
-                                <!-- Brand -->
-                                <div class="md:col-span-2">
-                                        <div class="flex items-center mb-4">
-
-                                                <span class="navbar-brand" style="font-family: genty;">Bloomer</span>
-                                        </div>
-                                        <p class="text-gray-600 mb-6 max-w-md">
-                                                The future of social commerce. Video-first shopping that's authentic,
-                                                fun, and instant.
-                                        </p>
-                                        <div class="flex space-x-4">
-                                                <a href="#"
-                                                        class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow text-purple-600 text-xl">
-                                                        <i class="fab fa-facebook-f"></i>
-                                                </a>
-                                                <a href="#"
-                                                        class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow text-pink-500 text-xl">
-                                                        <i class="fab fa-instagram"></i>
-                                                </a>
-                                                <a href="#"
-                                                        class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition-shadow text-blue-400 text-xl">
-                                                        <i class="fab fa-twitter"></i>
-                                                </a>
-                                        </div>
-                                </div>
-
-                                <!-- Links -->
-                                <div>
-                                        <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
-                                        <ul class="space-y-2">
-                                                <li><a href="#"
-                                                                class="text-gray-600 hover:text-purple-600 transition-colors">About</a>
-                                                </li>
-                                                <li><a href="#"
-                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Careers</a>
-                                                </li>
-                                                <li><a href="#"
-                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Press</a>
-                                                </li>
-                                        </ul>
-                                </div>
-
-                                <div>
-                                        <h4 class="font-semibold text-gray-900 mb-4">Support</h4>
-                                        <ul class="space-y-2">
-                                                <li><a href="#"
-                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Help</a>
-                                                </li>
-                                                <li><a href="#"
-                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Contact</a>
-                                                </li>
-                                                <li><a href="#"
-                                                                class="text-gray-600 hover:text-purple-600 transition-colors">Privacy</a>
-                                                </li>
-                                        </ul>
-                                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
                         </div>
-
-                        <!-- Bottom -->
-                        <div
-                                class="border-t border-gray-200 pt-8 flex flex-col sm:flex-row justify-between items-center">
-                                <p class="text-gray-500 text-sm">© 2025 Bloomer. All rights reserved.</p>
-                                <div class="flex items-center space-x-4 mt-4 sm:mt-0">
-                                        <span class="text-gray-500 text-sm">Launching on:</span>
-                                        <div class="flex space-x-2">
-                                                <span
-                                                        class="px-3 py-1 bg-white rounded-lg text-xs font-medium shadow-sm">📱
-                                                        iOS</span>
-                                                <span
-                                                        class="px-3 py-1 bg-white rounded-lg text-xs font-medium shadow-sm">🤖
-                                                        Android</span>
-                                        </div>
-                                </div>
-                        </div>
+                        <h3 class="feature-title">Social Engagement</h3>
+                        <p class="feature-description">
+                            Connect with creators and sellers. Like, comment, and share your favorite product
+                            discoveries.
+                        </p>
+                    </div>
                 </div>
-        </footer>
-        <!-- Font Awesome for icons -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-        <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'97b41813513c851f',t:'MTc1NzIyNTk2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="feature-title">Instant Shopping</h3>
+                        <p class="feature-description">
+                            Swipe and shop instantly. One-tap purchasing makes buying your favorite items effortless.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Trust & Safety</h3>
+                        <p class="feature-description">
+                            Verified sellers and secure transactions ensure a safe and trustworthy shopping experience.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Creator Community</h3>
+                        <p class="feature-description">
+                            Join a vibrant community of creators and sellers sharing authentic product experiences.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Mobile-First</h3>
+                        <p class="feature-description">
+                            Designed for mobile from the ground up. Shop anywhere, anytime with our intuitive app.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- CTA Section -->
+    <section id="download" class="cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="cta-title">Ready to Start Shopping?</h2>
+                    <p class="cta-subtitle">Join thousands of users discovering products through video stories</p>
+                    <div class="mt-4">
+                        <button class="btn btn-light btn-lg rounded-pill px-5 me-3 mb-3" onclick="showComingSoon()">
+                            <i class="fab fa-apple me-2"></i>Download for iOS
+                        </button>
+                        <button class="btn btn-outline-light btn-lg rounded-pill px-5 mb-3" onclick="showComingSoon()">
+                            <i class="fab fa-google-play me-2"></i>Download for Android
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <div class="footer-brand mb-4">
+                        <h1 class="fw-bold mb-3" style="font-family: 'Genty', sans-serif;">
+                            Bloomer</h1>
+
+                        <p class="footer-description mb-4">
+                            The future of social commerce. Shop through stories, connect with creators, and discover
+                            products in a whole new way. Join millions of users transforming how they shop online.
+                        </p>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="newsletter-section">
+                        <h6 class="fw-bold mb-3">Stay Updated</h6>
+                        <p class="small text-muted mb-3">Get the latest updates, features, and exclusive offers.</p>
+                        <div class="newsletter-form">
+                            <div class="input-group">
+                                <input type="email" class="form-control newsletter-input" placeholder="Enter your email"
+                                    aria-label="Email">
+                                <button class="btn newsletter-btn" type="button" onclick="subscribeNewsletter()">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <h6 class="footer-heading fw-bold mb-3">Product</h6>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#features" class="footer-link">Features</a></li>
+                        <li><a href="#" class="footer-link">How It Works</a></li>
+                        <li><a href="#" class="footer-link">Pricing</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                        <li><a href="#" class="footer-link">Integrations</a></li>
+                        <li><a href="#" class="footer-link">Security</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <h6 class="footer-heading fw-bold mb-3">Company</h6>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                        <li><a href="#" class="footer-link">Press Kit</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Investors</a></li>
+                        <li><a href="#" class="footer-link">Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <h6 class="footer-heading fw-bold mb-3">Support</h6>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                        <li><a href="#" class="footer-link">Community</a></li>
+                        <li><a href="#" class="footer-link">Status</a></li>
+                        <li><a href="#" class="footer-link">Bug Reports</a></li>
+                        <li><a href="#" class="footer-link">Feature Requests</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Social -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="footer-heading fw-bold mb-3">Connect</h6>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info mb-4">
+                        <div class="contact-item mb-2">
+                            <i class="fas fa-envelope me-2 text-primary"></i>
+                            <a href="mailto:hello@bloomer.com" class="footer-link">bloomer@gmail.com.com</a>
+                        </div>
+                        <div class="contact-item mb-2">
+                            <i class="fas fa-phone me-2 text-primary"></i>
+                            <a href="tel:+1234567890" class="footer-link">+91 0987654321</a>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-map-marker-alt me-2 text-primary"></i>
+                            <span class="footer-text">India</span>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-links">
+                        <h6 class="fw-bold mb-3">Follow Us</h6>
+                        <div class="d-flex flex-wrap">
+                            <a href="#" class="social-link me-3 mb-2" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link me-3 mb-2" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link me-3 mb-2" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-link me-3 mb-2" title="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="social-link me-3 mb-2" title="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-link me-3 mb-2" title="TikTok">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App Download Section -->
+            <div class="app-download-section">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-3">
+                        <h6 class="fw-bold mb-2">Download Our App</h6>
+                        <p class="text-muted mb-0">Get the full Bloomer experience on your mobile device</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="app-buttons">
+                            <a href="#" class="app-store-btn me-3 mb-2" onclick="showComingSoon()">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'%3E%3Crect width='120' height='40' rx='8' fill='%23000'/%3E%3Ctext x='60' y='25' text-anchor='middle' fill='white' font-family='Arial' font-size='12'%3EApp Store%3C/text%3E%3C/svg%3E"
+                                    alt="Download on App Store" class="app-store-image">
+                            </a>
+                            <a href="#" class="app-store-btn mb-2" onclick="showComingSoon()">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'%3E%3Crect width='120' height='40' rx='8' fill='%23000'/%3E%3Ctext x='60' y='25' text-anchor='middle' fill='white' font-family='Arial' font-size='12'%3EGoogle Play%3C/text%3E%3C/svg%3E"
+                                    alt="Get it on Google Play" class="app-store-image">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <p class="copyright-text mb-0">
+                            &copy; 2025 Bloomer Inc. All rights reserved.
+                            <span class="text-muted">Made with ❤️ in San Francisco</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="footer-legal-links">
+                            <a href="#" class="legal-link me-3">Terms of Service</a>
+                            <a href="#" class="legal-link me-3">Privacy Policy</a>
+                            <a href="#" class="legal-link me-3">Cookie Policy</a>
+                            <a href="#" class="legal-link">Accessibility</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Coming soon alert
+        function showComingSoon() {
+            alert('🎉 Coming Soon! \n\nBloomer will be available for download very soon. Stay tuned for updates!');
+        }
+
+        // Newsletter subscription
+        function subscribeNewsletter() {
+            const emailInput = document.querySelector('.newsletter-input');
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                alert('Please enter your email address.');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Simulate subscription success
+            alert('🎉 Thank you for subscribing! \n\nYou\'ll receive the latest updates about Bloomer directly in your inbox.');
+            emailInput.value = '';
+        }
+
+        // Email validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Animated counter for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
+            }
+
+            updateCounter();
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate feature cards
+                    if (entry.target.classList.contains('feature-card')) {
+                        entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    }
+
+                    // Animate stats
+                    if (entry.target.classList.contains('stat-number')) {
+                        const target = parseInt(entry.target.dataset.target);
+                        animateCounter(entry.target, target);
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Observe feature cards
+            document.querySelectorAll('.feature-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Observe stat numbers
+            document.querySelectorAll('.stat-number').forEach(stat => {
+                observer.observe(stat);
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function () {
+                const navbar = document.querySelector('.navbar-custom');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255,255,255,0.98)';
+                    navbar.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+                } else {
+                    navbar.style.background = 'rgba(255,255,255,0.95)';
+                    navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                }
+            });
+
+            // Add click animations to buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255,255,255,0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s ease-out;
+                        pointer-events: none;
+                    `;
+
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        });
+
+        // Add ripple animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'97b3a23de3689361',t:'MTc1NzIyMTEzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
 
 </html>
