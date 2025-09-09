@@ -36,6 +36,9 @@ h6,
 }
 
 
+
+
+
 .hero-section {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     min-height: 100vh;
@@ -813,9 +816,14 @@ h6,
     }
 }
 
-.coming-soon-text {
+.coming-soon-text {   
     font-family: open-sans;
+    font-size: 5.0rem;  
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1rem;
 }
+
 
 .coming {
     display: flex;
@@ -989,25 +997,182 @@ h6,
     font-size: 1rem;
     color: #7b4f8d;
     opacity: 0.7;
-}
+}           
 
 @media (max-width: 600px) {
+
+   
+   .feature-btn {
+    animation: fadeInUp 1s ease-out 0.6s both;
+    padding-left: 85px;
+}
+   .learn-btn {
+    animation: fadeInUp 1s ease-out 0.6s both;
+    padding-left: 100px;
+}
+
+
+    .phone-mockup {
+        animation: float 3s ease-in-out infinite;
+        width: 180px; /* optional: scale down the container */
+        margin: 0 auto; /* center if needed */
+        padding-left: 8px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .phone-frame {
+        width: 190px;
+        height: 380px;
+        border-radius: 25px;
+        padding: 15px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+         
+    }
+
+    .phone-screen {
+        width: 100%;
+        height: 90%;
+        border-radius: 20px;
+        padding-top: 0px;
+       
+    }
+
+
     .coming-soon-text {
-        font-size: 1rem;
+        font-size: 3.4rem;
     }
 
     .tagline {
-        font-size: 1.1rem;
+        font-size: .6rem;
     }
 
-    .form input[type="email"],
-    .get-notified-btn {
-        width: 100%;
+    .form input[type="email"]{
+         width: 80%;
         min-width: unset;
+    }
+    .get-notified-btn {
+        width: 50%;
+        min-width: unset;
+       
     }
 
     .form {
         flex-direction: column;
         gap: 0.7rem;
     }
+    
+}/* =============================
+   Navbar Toggle (Hamburger → X)
+   ============================= */
+.custom-toggler {
+  border: none;                 /* Removes default button border */
+  background: transparent;      /* Makes button background transparent */
+  outline: none;                /* Removes focus outline */
+  padding: 10;                  /* (⚠ Missing unit - should be 10px) spacing inside button */
+  width: 30px;                  /* Width of the hamburger button */
+  height: 24px;                 /* Height of the hamburger button */
+  position: relative;           /* Allows absolute-positioned bars inside */
+  cursor: pointer;              /* Shows pointer on hover */
+  z-index: 1001;                /* Keeps toggle button above the menu */
 }
+
+/* Hide Bootstrap default icon */
+.navbar-toggler .navbar-toggler-icon {
+  display: none;                /* Hides Bootstrap's built-in hamburger */
+}
+
+.toggler-icon,
+.toggler-icon::before,
+.toggler-icon::after {
+  content: "";                  /* Needed for pseudo-elements (::before/::after) */
+  position: absolute;           /* Absolutely positioned inside button */
+  left: 0;                      /* Aligns bars to left edge */
+  width: 100%;                  /* Full width of button (30px here) */
+  height: 3px;                  /* Thickness of each hamburger bar */
+  background-color: #333;       /* Dark gray bar color */
+  transition: all 0.1s ease-in-out; /* Smooth animation for open/close */
+  border-radius: 2px;           /* Slightly rounded corners */
+}
+
+.toggler-icon {
+  top: 50%;                     /* Places middle bar vertically centered */
+  transform: translateY(-50%);  /* Adjusts it so it's exactly centered */
+}
+
+.toggler-icon::before {
+  top: -8px;                    /* Positions the top bar above middle bar */
+}
+
+.toggler-icon::after {
+  top: 8px;                     /* Positions the bottom bar below middle bar */
+}
+
+/* When active → turn into "X" */
+.custom-toggler.active .toggler-icon {
+  background: transparent;       /* Hides middle bar when active */
+}
+.custom-toggler.active .toggler-icon::before {
+  transform: rotate(45deg);      /* Rotates top bar diagonally */
+  top: 0;                        /* Moves it to middle */
+}
+.custom-toggler.active .toggler-icon::after {
+  transform: rotate(-45deg);     /* Rotates bottom bar diagonally */
+  top: 0;                        /* Moves it to middle (overlapping top bar) */
+}
+
+/* =============================
+   Mobile Menu (Transparent Box)
+   ============================= */
+@media (max-width: 991px) {      /* Applies only on tablets/mobiles */
+  .mobile-menu {
+    position: absolute;          /* Positioned relative to page */
+    top: 70px;                   /* Appears just below navbar */
+    right: 15px;                 /* Small gap from right edge */
+    left: 15px;                  /* Small gap from left edge */
+    background: rgba(255, 255, 255, 0.85); /* White with transparency */
+    backdrop-filter: blur(20px); /* Frosted glass blur effect */
+    border-radius: 15px;         /* Rounded corners */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Soft shadow behind menu */
+    padding: 30px;               /* Space inside menu box */
+    z-index: 1000;               /* Ensures menu sits above content */
+  }
+
+  .mobile-menu ul {
+    display: flex;               /* Flexbox layout */
+    flex-direction: column;      /* Stack items vertically */
+    gap: 15px;                   /* Space between items */
+    margin: 0;                   /* Reset list margin */
+    padding: 0;                  /* Reset list padding */
+    list-style: none;            /* Removes bullets */
+  }
+
+  .mobile-menu .nav-item {
+    width: 100%;                 /* Each menu item fills full width */
+  }
+
+  .mobile-menu .nav-link {
+    display: block;              /* Makes links block-level (bigger clickable area) */
+    font-weight: 600;            /* Bold text */
+    text-align: center;          /* Center-aligns text */
+    border-radius: 10px;         /* Rounded corners on hover bg */
+    padding: 15px 20px;          /* Inner padding (click area) */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth hover effects */
+    color: #2c3e50 !important;   /* Dark text color (mobile only) */
+  }
+
+  .mobile-menu .nav-link:hover {
+    background: rgba(123, 79, 141, 0.1); /* Light purple bg on hover */
+    color: #7B4F8D !important;           /* Purple text color on hover */
+  }
+}
+  
+
+.custom-toggler:focus,
+.custom-toggler:active {
+  outline: none !important;      /* removes outline */
+  box-shadow: none !important;   /* removes glow/blue border */
+  background: transparent !important; /* removes background */
+  border: none !important;       /* removes border */
+}
+
