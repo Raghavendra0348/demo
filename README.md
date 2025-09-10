@@ -18,11 +18,11 @@ This delivers a **fun, authentic, and trust-driven shopping experience**.
 
 ## 📸 Screenshots  
 
-> Place your screenshots inside a `/screenshots` folder in this repo.  
 
-| Home Feed | Product Reel | Checkout |
-|-----------|--------------|----------|
-| ![Home](./screen_shot.png) | ![Product Reel](./screen_shot1.png) |
+
+| Home Feed | Product Reel | 
+|-----------|--------------|
+| ![Home](./screen_shot1.png) | ![Product Reel](./screen_shot.png) |
 
 ---
 
