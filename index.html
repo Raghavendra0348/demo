@@ -75,6 +75,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
    
 
 </head>
@@ -480,24 +483,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         // Newsletter subscription
-        function subscribeNewsletter() {
-            const emailInput = document.querySelector('.newsletter-input');
-            const email = emailInput.value.trim();
+        // This is the NEW version of your function
+async function subscribeNewsletter() {
+    const emailInput = document.querySelector('.newsletter-input');
+    const email = emailInput.value.trim();
 
-            if (!email) {
-                alert('Please enter your email address.');
-                return;
-            }
+    if (!email || !isValidEmail(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
 
-            if (!isValidEmail(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            // Simulate subscription success
-            alert('🎉 Thank you for subscribing! \n\nYou\'ll receive the latest updates about Bloomer directly in your inbox.');
-            emailInput.value = '';
-        }
+    try {
+        // This now calls the function from the script we added
+        const successMessage = await saveEmailToFirebase(email);
+        alert('🎉 Thank you for subscribing! \n\n' + successMessage);
+        emailInput.value = '';
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+}
 
         // Email validation
         function isValidEmail(email) {
@@ -656,6 +660,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
         </script>
+        <script>
+    // --- 1. Initialize Firebase ---
+    // TODO: Paste your Firebase Config object here
+    const firebaseConfig = {
+  // ⚠ IMPORTANT: Use your new keys here and keep them safe.
+  apiKey:  "AIzaSyBTkstirpXBzcjQhtAnjypWXi2EUDCfRKA",
+  authDomain: "bloomer-3d7ed.firebaseapp.com",
+  projectId: "bloomer-3d7ed",
+  storageBucket: "bloomer-3d7ed.appspot.com",
+  messagingSenderId: "387571754443",
+  appId: "1:387571754443:web:e70f6e18a22ea785d1424e",
+  measurementId: "G-Q0CXMPSLJG"
+};
+
+    // Initialize Firebase using the global 'firebase' object from the scripts in the <head>
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // --- 2. Create a reusable function to save emails ---
+    async function saveEmailToFirebase(email) {
+        try {
+            await db.collection("subscribers").add({
+                email: email,
+                submittedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            return "Success! Thanks for subscribing.";
+        } catch (error) {
+            console.error("Firebase Error:", error);
+            throw new Error("Failed to subscribe. Please try again.");
+        }
+    }
+
+    // --- 3. Handle the main "Coming Soon" form ---
+    const mainForm = document.querySelector('section.coming .form');
+    if (mainForm) {
+        mainForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const emailInput = mainForm.querySelector('input[type="email"]');
+            const statusMessage = mainForm.nextElementSibling; // This assumes <p> is next
+            const email = emailInput.value.trim();
+            
+            if (!email) return;
+
+            if (statusMessage) statusMessage.textContent = "Submitting...";
+
+            try {
+                const successMessage = await saveEmailToFirebase(email);
+                if (statusMessage) statusMessage.textContent = successMessage;
+                mainForm.reset();
+            } catch (error) {
+                if (statusMessage) statusMessage.textContent = error.message;
+            }
+        });
+    }
+</script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'97b3a23de3689361',t:'MTc1NzIyMTEzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body><script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -704,4 +763,3 @@ document.querySelector('.custom-toggler').addEventListener('click', function () 
 
 
 </html>
-
