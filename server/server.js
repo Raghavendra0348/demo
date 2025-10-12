@@ -11,7 +11,7 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 const { admin, db } = require('./config/firebase');
 
 // Import routes
-const newsletterRoutes = require('./routes/newsletter');
+const newsletterRoutes = require('./routes/newsletter-fixed');
 const contactRoutes = require('./routes/contact');
 
 const app = express();
