@@ -1,0 +1,17 @@
+name: bloomer-app
+
+services:
+  backend:
+    source: .
+    dockerfile: Dockerfile.backend
+    port: 5000
+    env:
+      NODE_ENV: production
+    
+  frontend:
+    source: ./client
+    dockerfile: Dockerfile.frontend
+    port: 3000
+    env:
+      NODE_ENV: production
+      REACT_APP_API_URL: https://your-backend-url.railway.app

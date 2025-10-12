@@ -1,0 +1,22 @@
+# Backend Dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+COPY server/package*.json ./server/
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy server code
+COPY server/ ./server/
+COPY firebase.json ./
+COPY firestore.rules ./
+
+# Expose port
+EXPOSE 5000
+
+# Start the server
+CMD ["npm", "start"]

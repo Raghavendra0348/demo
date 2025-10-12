@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: bloomer-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: FIREBASE_SERVICE_ACCOUNT_KEY
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://your-vercel-frontend.vercel.app,https://bloomer.vercel.app
+    autoDeploy: true
+    branch: main
+    rootDir: ./
+    dockerfile: Dockerfile.backend
