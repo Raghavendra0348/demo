@@ -1,0 +1,59 @@
+# ===================================================================
+# PRODUCTION DEPLOYMENT .GITIGNORE FOR BLOOMER
+# Only essential files excluded - clean and minimal
+# ===================================================================
+
+# Dependencies
+node_modules/
+*/node_modules/
+package-lock.json
+yarn.lock
+
+# Environment Variables (NEVER COMMIT SECRETS)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*/.env
+
+# Build outputs
+build/
+dist/
+*/build/
+*/dist/
+out/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Cache
+.cache/
+.next/
+.nuxt/
+
+# Firebase
+firebase-adminsdk-*.json
+.firebase/
+firebase-debug.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Testing
+coverage/
+
+# Local development
+.local
+.vercel
