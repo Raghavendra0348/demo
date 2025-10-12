@@ -1,0 +1,6 @@
+/* Import your existing index.css styles here or copy them */
+@import './index.css';
+
+.App {
+        text-align: center;
+}

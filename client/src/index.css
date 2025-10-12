@@ -101,14 +101,16 @@ h6,
 .cta-buttons {
     animation: fadeInUp 1s ease-out 0.6s both;
 }
-.cst-btm{
-      background-color: white;
+
+.cst-btm {
+    background-color: white;
 }
+
 .btn-primary-custom {
     background: white;
     color: var(--primary-color);
     border: none;
-  
+
     padding: 15px 40px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -165,7 +167,7 @@ h6,
     border-radius: 25px;
     overflow: hidden;
     position: relative;
-    padding-top:0px;
+    padding-top: 0px;
 }
 
 .video-cards {
@@ -454,8 +456,8 @@ h6,
 
 @font-face {
     font-family: 'Genty';
-    src: url('genty/GentyDemo-Regular.otf') format('opentype'),
-        url('genty/GentyDemo-Regular.ttf') format('truetype');
+    src: url('./fonts/GentyDemo-Regular.otf') format('opentype'),
+        url('./fonts/GentyDemo-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -464,8 +466,8 @@ h6,
 /* Bold */
 @font-face {
     font-family: 'Genty';
-    src: url('genty/GentyDemo-Regular.otf') format('opentype'),
-        url('genty/GentyDemo-Regular.ttf') format('truetype');
+    src: url('./fonts/GentyDemo-Regular.otf') format('opentype'),
+        url('./fonts/GentyDemo-Regular.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -716,8 +718,8 @@ h6,
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 30px 0;
     margin-top: 40px;
-    
-    
+
+
 }
 
 .copyright-text {
@@ -816,12 +818,12 @@ h6,
     }
 }
 
-.coming-soon-text {   
+.coming-soon-text {
     font-family: open-sans;
-    font-size: 5.0rem;  
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 1rem;
+    font-size: 5.0rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 
@@ -855,6 +857,7 @@ h6,
     font-weight: 800;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
     color: var(--primary-color);
@@ -997,25 +1000,28 @@ h6,
     font-size: 1rem;
     color: #7b4f8d;
     opacity: 0.7;
-}           
+}
 
 @media (max-width: 600px) {
 
-   
-   .feature-btn {
-    animation: fadeInUp 1s ease-out 0.6s both;
-    padding-left: 85px;
-}
-   .learn-btn {
-    animation: fadeInUp 1s ease-out 0.6s both;
-    padding-left: 100px;
-}
+
+    .feature-btn {
+        animation: fadeInUp 1s ease-out 0.6s both;
+        padding-left: 85px;
+    }
+
+    .learn-btn {
+        animation: fadeInUp 1s ease-out 0.6s both;
+        padding-left: 100px;
+    }
 
 
     .phone-mockup {
         animation: float 3s ease-in-out infinite;
-        width: 180px; /* optional: scale down the container */
-        margin: 0 auto; /* center if needed */
+        width: 180px;
+        /* optional: scale down the container */
+        margin: 0 auto;
+        /* center if needed */
         padding-left: 8px;
         padding-top: 10px;
         padding-bottom: 10px;
@@ -1027,7 +1033,7 @@ h6,
         border-radius: 25px;
         padding: 15px;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-         
+
     }
 
     .phone-screen {
@@ -1035,7 +1041,7 @@ h6,
         height: 90%;
         border-radius: 20px;
         padding-top: 0px;
-       
+
     }
 
 
@@ -1047,132 +1053,267 @@ h6,
         font-size: .6rem;
     }
 
-    .form input[type="email"]{
-         width: 80%;
+    .form input[type="email"] {
+        width: 80%;
         min-width: unset;
     }
+
     .get-notified-btn {
         width: 50%;
         min-width: unset;
-       
+
     }
 
     .form {
         flex-direction: column;
         gap: 0.7rem;
     }
-    
-}/* =============================
+
+}
+
+/* =============================
    Navbar Toggle (Hamburger → X)
    ============================= */
 .custom-toggler {
-  border: none;                 /* Removes default button border */
-  background: transparent;      /* Makes button background transparent */
-  outline: none;                /* Removes focus outline */
-  padding: 10;                  /* (⚠ Missing unit - should be 10px) spacing inside button */
-  width: 30px;                  /* Width of the hamburger button */
-  height: 24px;                 /* Height of the hamburger button */
-  position: relative;           /* Allows absolute-positioned bars inside */
-  cursor: pointer;              /* Shows pointer on hover */
-  z-index: 1001;                /* Keeps toggle button above the menu */
+    border: none;
+    /* Removes default button border */
+    background: transparent;
+    /* Makes button background transparent */
+    outline: none;
+    /* Removes focus outline */
+    padding: 10;
+    /* (⚠ Missing unit - should be 10px) spacing inside button */
+    width: 30px;
+    /* Width of the hamburger button */
+    height: 24px;
+    /* Height of the hamburger button */
+    position: relative;
+    /* Allows absolute-positioned bars inside */
+    cursor: pointer;
+    /* Shows pointer on hover */
+    z-index: 1001;
+    /* Keeps toggle button above the menu */
 }
 
 /* Hide Bootstrap default icon */
 .navbar-toggler .navbar-toggler-icon {
-  display: none;                /* Hides Bootstrap's built-in hamburger */
+    display: none;
+    /* Hides Bootstrap's built-in hamburger */
 }
 
 .toggler-icon,
 .toggler-icon::before,
 .toggler-icon::after {
-  content: "";                  /* Needed for pseudo-elements (::before/::after) */
-  position: absolute;           /* Absolutely positioned inside button */
-  left: 0;                      /* Aligns bars to left edge */
-  width: 100%;                  /* Full width of button (30px here) */
-  height: 3px;                  /* Thickness of each hamburger bar */
-  background-color: #333;       /* Dark gray bar color */
-  transition: all 0.1s ease-in-out; /* Smooth animation for open/close */
-  border-radius: 2px;           /* Slightly rounded corners */
+    content: "";
+    /* Needed for pseudo-elements (::before/::after) */
+    position: absolute;
+    /* Absolutely positioned inside button */
+    left: 0;
+    /* Aligns bars to left edge */
+    width: 100%;
+    /* Full width of button (30px here) */
+    height: 3px;
+    /* Thickness of each hamburger bar */
+    background-color: #333;
+    /* Dark gray bar color */
+    transition: all 0.1s ease-in-out;
+    /* Smooth animation for open/close */
+    border-radius: 2px;
+    /* Slightly rounded corners */
 }
 
 .toggler-icon {
-  top: 50%;                     /* Places middle bar vertically centered */
-  transform: translateY(-50%);  /* Adjusts it so it's exactly centered */
+    top: 50%;
+    /* Places middle bar vertically centered */
+    transform: translateY(-50%);
+    /* Adjusts it so it's exactly centered */
 }
 
 .toggler-icon::before {
-  top: -8px;                    /* Positions the top bar above middle bar */
+    top: -8px;
+    /* Positions the top bar above middle bar */
 }
 
 .toggler-icon::after {
-  top: 8px;                     /* Positions the bottom bar below middle bar */
+    top: 8px;
+    /* Positions the bottom bar below middle bar */
 }
 
 /* When active → turn into "X" */
 .custom-toggler.active .toggler-icon {
-  background: transparent;       /* Hides middle bar when active */
+    background: transparent;
+    /* Hides middle bar when active */
 }
+
 .custom-toggler.active .toggler-icon::before {
-  transform: rotate(45deg);      /* Rotates top bar diagonally */
-  top: 0;                        /* Moves it to middle */
+    transform: rotate(45deg);
+    /* Rotates top bar diagonally */
+    top: 0;
+    /* Moves it to middle */
 }
+
 .custom-toggler.active .toggler-icon::after {
-  transform: rotate(-45deg);     /* Rotates bottom bar diagonally */
-  top: 0;                        /* Moves it to middle (overlapping top bar) */
+    transform: rotate(-45deg);
+    /* Rotates bottom bar diagonally */
+    top: 0;
+    /* Moves it to middle (overlapping top bar) */
 }
 
 /* =============================
    Mobile Menu (Transparent Box)
    ============================= */
-@media (max-width: 991px) {      /* Applies only on tablets/mobiles */
-  .mobile-menu {
-    position: absolute;          /* Positioned relative to page */
-    top: 70px;                   /* Appears just below navbar */
-    right: 15px;                 /* Small gap from right edge */
-    left: 15px;                  /* Small gap from left edge */
-    background: rgba(255, 255, 255, 0.85); /* White with transparency */
-    backdrop-filter: blur(20px); /* Frosted glass blur effect */
-    border-radius: 15px;         /* Rounded corners */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Soft shadow behind menu */
-    padding: 30px;               /* Space inside menu box */
-    z-index: 1000;               /* Ensures menu sits above content */
-  }
+@media (max-width: 991px) {
 
-  .mobile-menu ul {
-    display: flex;               /* Flexbox layout */
-    flex-direction: column;      /* Stack items vertically */
-    gap: 15px;                   /* Space between items */
-    margin: 0;                   /* Reset list margin */
-    padding: 0;                  /* Reset list padding */
-    list-style: none;            /* Removes bullets */
-  }
+    /* Applies only on tablets/mobiles */
+    .mobile-menu {
+        position: absolute;
+        /* Positioned relative to page */
+        top: 70px;
+        /* Appears just below navbar */
+        right: 15px;
+        /* Small gap from right edge */
+        left: 15px;
+        /* Small gap from left edge */
+        background: rgba(255, 255, 255, 0.85);
+        /* White with transparency */
+        backdrop-filter: blur(20px);
+        /* Frosted glass blur effect */
+        border-radius: 15px;
+        /* Rounded corners */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        /* Soft shadow behind menu */
+        padding: 30px;
+        /* Space inside menu box */
+        z-index: 1000;
+        /* Ensures menu sits above content */
+    }
 
-  .mobile-menu .nav-item {
-    width: 100%;                 /* Each menu item fills full width */
-  }
+    .mobile-menu ul {
+        display: flex;
+        /* Flexbox layout */
+        flex-direction: column;
+        /* Stack items vertically */
+        gap: 15px;
+        /* Space between items */
+        margin: 0;
+        /* Reset list margin */
+        padding: 0;
+        /* Reset list padding */
+        list-style: none;
+        /* Removes bullets */
+    }
 
-  .mobile-menu .nav-link {
-    display: block;              /* Makes links block-level (bigger clickable area) */
-    font-weight: 600;            /* Bold text */
-    text-align: center;          /* Center-aligns text */
-    border-radius: 10px;         /* Rounded corners on hover bg */
-    padding: 15px 20px;          /* Inner padding (click area) */
-    transition: background 0.3s ease, color 0.3s ease; /* Smooth hover effects */
-    color: #2c3e50 !important;   /* Dark text color (mobile only) */
-  }
+    .mobile-menu .nav-item {
+        width: 100%;
+        /* Each menu item fills full width */
+    }
 
-  .mobile-menu .nav-link:hover {
-    background: rgba(123, 79, 141, 0.1); /* Light purple bg on hover */
-    color: #7B4F8D !important;           /* Purple text color on hover */
-  }
+    .mobile-menu .nav-link {
+        display: block;
+        /* Makes links block-level (bigger clickable area) */
+        font-weight: 600;
+        /* Bold text */
+        text-align: center;
+        /* Center-aligns text */
+        border-radius: 10px;
+        /* Rounded corners on hover bg */
+        padding: 15px 20px;
+        /* Inner padding (click area) */
+        transition: background 0.3s ease, color 0.3s ease;
+        /* Smooth hover effects */
+        color: #2c3e50 !important;
+        /* Dark text color (mobile only) */
+    }
+
+    .mobile-menu .nav-link:hover {
+        background: rgba(123, 79, 141, 0.1);
+        /* Light purple bg on hover */
+        color: #7B4F8D !important;
+        /* Purple text color on hover */
+    }
 }
-  
+
 
 .custom-toggler:focus,
 .custom-toggler:active {
-  outline: none !important;      /* removes outline */
-  box-shadow: none !important;   /* removes glow/blue border */
-  background: transparent !important; /* removes background */
-  border: none !important;       /* removes border */
+    outline: none !important;
+    /* removes outline */
+    box-shadow: none !important;
+    /* removes glow/blue border */
+    background: transparent !important;
+    /* removes background */
+    border: none !important;
+    /* removes border */
 }
 
+/* Download Section Styles */
+.download-section {
+    background: linear-gradient(135deg, rgba(123, 79, 141, 0.05) 0%, rgba(168, 123, 201, 0.05) 100%);
+    padding: 80px 0;
+}
+
+.download-section .btn-dark {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    border: none;
+    padding: 15px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-section .btn-dark:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(123, 79, 141, 0.3);
+}
+
+/* About Section Styles */
+.about-section {
+    padding: 80px 0;
+}
+
+.about-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(123, 79, 141, 0.1);
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(123, 79, 141, 0.2) !important;
+}
+
+.about-icon {
+    padding: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(123, 79, 141, 0.1) 0%, rgba(168, 123, 201, 0.1) 100%);
+    display: inline-block;
+}
+
+.stats-container {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.stat-item {
+    padding: 20px;
+}
+
+.stat-item h3 {
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .download-section,
+    .about-section {
+        padding: 50px 0;
+    }
+
+    .stats-container {
+        padding: 20px;
+    }
+}
