@@ -12,8 +12,44 @@ try {
   console.log('❌ Failed to import email service:', error.message);
 }
 
-// Simple in-memory storage for development (replace with Firebase when it works)
-const subscribers = new Set();
+// Simple file-based storage for persistence across restarts
+const fs = require('fs');
+const path = require('path');
+
+const SUBSCRIBERS_FILE = path.join(__dirname, '..', 'data', 'subscribers.json');
+
+// Ensure data directory exists
+const dataDir = path.dirname(SUBSCRIBERS_FILE);
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+// Load existing subscribers
+let subscribers = new Set();
+try {
+  if (fs.existsSync(SUBSCRIBERS_FILE)) {
+    const data = JSON.parse(fs.readFileSync(SUBSCRIBERS_FILE, 'utf8'));
+    subscribers = new Set(data.emails || []);
+    console.log(`📧 Loaded ${subscribers.size} existing subscribers`);
+  }
+} catch (error) {
+  console.log('⚠️  Could not load existing subscribers:', error.message);
+}
+
+// Save subscribers to file
+function saveSubscribers() {
+  try {
+    const data = {
+      emails: Array.from(subscribers),
+      lastUpdated: new Date().toISOString(),
+      count: subscribers.size
+    };
+    fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify(data, null, 2));
+    console.log(`💾 Saved ${subscribers.size} subscribers to file`);
+  } catch (error) {
+    console.log('⚠️  Could not save subscribers:', error.message);
+  }
+}
 
 // Subscribe to newsletter - SIMPLIFIED VERSION
 router.post('/subscribe', async (req, res) => {
@@ -39,17 +75,26 @@ router.post('/subscribe', async (req, res) => {
     const normalizedEmail = email.toLowerCase().trim();
     console.log(`📧 Processing subscription for: ${normalizedEmail}`);
 
-    // Check if already subscribed (simple check)
+    // Check if already subscribed
     if (subscribers.has(normalizedEmail)) {
-      return res.status(409).json({
-        success: false,
-        message: 'Email is already subscribed to our newsletter'
+      console.log(`⚠️  ${normalizedEmail} is already subscribed`);
+      return res.status(200).json({
+        success: true,
+        alreadySubscribed: true,
+        message: "You're already part of our Bloomer family! We'll keep you updated on all the exciting things coming your way.",
+        data: {
+          email: normalizedEmail,
+          status: 'already_subscribed',
+          subscribedAt: 'previously',
+          note: 'Thanks for your continued interest in Bloomer!'
+        }
       });
     }
 
     // Add to subscribers
     subscribers.add(normalizedEmail);
-    console.log(`✅ Added ${normalizedEmail} to subscribers`);
+    saveSubscribers(); // Persist to file
+    console.log(`✅ Added ${normalizedEmail} to subscribers (total: ${subscribers.size})`);
 
     // Send welcome email
     let emailResult = null;

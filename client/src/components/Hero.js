@@ -30,7 +30,7 @@ const Hero = () => {
 
                         if (data.success) {
                                 // Show positive message with appropriate emoji
-                                const emoji = data.alreadySubscribed ? '�' : '🎉';
+                                const emoji = data.alreadySubscribed ? '🌸' : '🎉';
                                 setMessage(`${emoji} ${data.message}`);
                                 if (!data.alreadySubscribed) {
                                         setEmail(''); // Only clear email for new subscriptions
