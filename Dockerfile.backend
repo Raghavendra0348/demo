@@ -5,12 +5,11 @@ WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
-COPY server/package*.json ./server/
 
 # Install dependencies
 RUN npm ci --only=production
 
-# Copy server code
+# Copy server code and configuration
 COPY server/ ./server/
 COPY firebase.json ./
 COPY firestore.rules ./

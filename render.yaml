@@ -18,7 +18,8 @@ services:
       - key: EMAIL_PASS
         sync: false
       - key: ALLOWED_ORIGINS
-        value: https://your-vercel-frontend.vercel.app,https://bloomer.vercel.app
+        value: https://bloomer.in
+        # IMPORTANT: Replace with your actual frontend URL after deploying to Vercel
     autoDeploy: true
     branch: main
     rootDir: ./
