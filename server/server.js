@@ -28,20 +28,42 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
         ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
         : ['http://localhost:3000', 'http://localhost:5000'];
 
+console.log('🌐 Allowed Origins:', allowedOrigins);
+
+// Enable pre-flight across all routes
+app.options('*', cors({
+        origin: function(origin, callback) {
+                if (!origin) return callback(null, true);
+                if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins[0] === '*') {
+                        callback(null, true);
+                } else {
+                        console.log('❌ CORS blocked origin:', origin);
+                        callback(new Error('Not allowed by CORS'));
+                }
+        },
+        credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+        exposedHeaders: ['Content-Length', 'X-Request-Id'],
+        maxAge: 86400 // 24 hours
+}));
+
 app.use(cors({
         origin: function(origin, callback) {
                 // Allow requests with no origin (mobile apps, curl, etc.)
                 if (!origin) return callback(null, true);
                 
-                if (allowedOrigins.indexOf(origin) === -1 && allowedOrigins[0] !== '*') {
-                        const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-                        return callback(new Error(msg), false);
+                if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins[0] === '*') {
+                        callback(null, true);
+                } else {
+                        console.log('❌ CORS blocked origin:', origin);
+                        callback(new Error('Not allowed by CORS'));
                 }
-                return callback(null, true);
         },
         credentials: true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization']
+        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+        exposedHeaders: ['Content-Length', 'X-Request-Id']
 }));
 
 app.use(express.json());
@@ -49,7 +71,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Firebase is already initialized in config/firebase.js
 console.log('✅ Firebase initialized and ready');
-console.log('🌐 Allowed origins:', allowedOrigins);
 
 // Request logging middleware
 app.use((req, res, next) => {
