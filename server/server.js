@@ -17,18 +17,45 @@ const contactRoutes = require('./routes/contact');
 const app = express();
 
 // Middleware
-app.use(helmet());
+app.use(helmet({
+        crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 app.use(compression());
 app.use(morgan('dev'));
+
+// CORS configuration
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+        ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
+        : ['http://localhost:3000', 'http://localhost:5000'];
+
 app.use(cors({
-        origin: process.env.ALLOWED_ORIGINS?.split(',') || '*',
-        credentials: true
+        origin: function(origin, callback) {
+                // Allow requests with no origin (mobile apps, curl, etc.)
+                if (!origin) return callback(null, true);
+                
+                if (allowedOrigins.indexOf(origin) === -1 && allowedOrigins[0] !== '*') {
+                        const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+                        return callback(new Error(msg), false);
+                }
+                return callback(null, true);
+        },
+        credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Firebase is already initialized in config/firebase.js
 console.log('✅ Firebase initialized and ready');
+console.log('🌐 Allowed origins:', allowedOrigins);
+
+// Request logging middleware
+app.use((req, res, next) => {
+        console.log(`${req.method} ${req.path} - Origin: ${req.get('origin') || 'none'}`);
+        next();
+});
 
 // API Routes
 app.use('/api/newsletter', newsletterRoutes);
@@ -74,9 +101,12 @@ app.use((err, req, res, next) => {
 
 // 404 handler
 app.use((req, res) => {
+        console.log(`❌ 404 - Route not found: ${req.method} ${req.path}`);
         res.status(404).json({
                 success: false,
-                message: 'Route not found'
+                message: 'Route not found',
+                path: req.path,
+                method: req.method
         });
 });
 

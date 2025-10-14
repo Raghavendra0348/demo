@@ -11,7 +11,8 @@ const Newsletter = ({ source = 'footer' }) => {
                 setMessage('');
 
                 try {
-                        const response = await fetch('/api/newsletter/subscribe', {
+                        const API_URL = process.env.REACT_APP_API_URL || '/api';
+                        const response = await fetch(`${API_URL}/newsletter/subscribe`, {
                                 method: 'POST',
                                 headers: {
                                         'Content-Type': 'application/json',
