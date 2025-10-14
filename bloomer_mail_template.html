@@ -1,12 +1,3 @@
-/**
- * Professional Email Template for Bloomer Newsletter
- * Clean, professional design without emojis or icons
- */
-
-const getProfessionalWelcomeEmail = (email) => {
-        return {
-                subject: 'Welcome to Bloomer - Subscription Confirmed',
-                html: `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -253,7 +244,7 @@ const getProfessionalWelcomeEmail = (email) => {
 
       <div class="social-links">
         <a href="https://www.bloomer.in">Website</a> |
-        <a href="mailto:bloomer.7b@gmail.com">Contact</a> |
+        <a href="mailto:hello@bloomer.in">Contact</a> |
         <a href="https://www.bloomer.in/privacy">Privacy</a>
       </div>
 
@@ -266,33 +257,3 @@ const getProfessionalWelcomeEmail = (email) => {
 </body>
 </html>
 
-    `,
-                text: `
-Welcome to Bloomer!
-
-Thank you for subscribing to our newsletter. You're now part of an exclusive community that will be the first to experience the future of shopping.
-
-Bloomer is revolutionizing e-commerce through video-first experiences. Watch, swipe, and shop instantly from creators and brands you trust.
-
-What You Can Expect:
-• Early Access: Be first to try new features and experiences
-• Exclusive Content: Behind-the-scenes videos from top creators
-• Special Offers: Member-only discounts and promotions
-• Product Updates: Latest news about platform developments
-• Creator Spotlights: Discover amazing products and stories
-
-Visit us at: https://www.bloomer.in
-
-Best regards,
-The Bloomer Team
-
----
-You're receiving this email because you subscribed to Bloomer newsletter at ${email}.
-Reply to this email with "unsubscribe" if you no longer wish to receive these emails.
-    `
-        };
-};
-
-module.exports = {
-        getProfessionalWelcomeEmail
-};

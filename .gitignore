@@ -95,3 +95,6 @@ WHERE_IS_MY_DATA.md
 *.sh
 test-email*.js
 SENDGRID_KEY_MANUAL.txt
+
+FIX_SPAM_FOLDER.md
+HOW_TO_EDIT_EMAIL.md
