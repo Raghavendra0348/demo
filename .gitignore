@@ -94,3 +94,4 @@ WHERE_IS_MY_DATA.md
 # Development scripts
 *.sh
 test-email*.js
+SENDGRID_KEY_MANUAL.txt
