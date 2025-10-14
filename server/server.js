@@ -24,7 +24,7 @@ app.use(compression());
 app.use(morgan('dev'));
 
 // CORS configuration
-const allowedOrigins = process.env.ALLOWED_ORIGINS 
+const allowedOrigins = process.env.ALLOWED_ORIGINS
         ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
         : ['http://localhost:3000', 'http://localhost:5000'];
 
@@ -32,7 +32,7 @@ console.log('🌐 Allowed Origins:', allowedOrigins);
 
 // Enable pre-flight across all routes
 app.options('*', cors({
-        origin: function(origin, callback) {
+        origin: function (origin, callback) {
                 if (!origin) return callback(null, true);
                 if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins[0] === '*') {
                         callback(null, true);
@@ -49,10 +49,10 @@ app.options('*', cors({
 }));
 
 app.use(cors({
-        origin: function(origin, callback) {
+        origin: function (origin, callback) {
                 // Allow requests with no origin (mobile apps, curl, etc.)
                 if (!origin) return callback(null, true);
-                
+
                 if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins[0] === '*') {
                         callback(null, true);
                 } else {

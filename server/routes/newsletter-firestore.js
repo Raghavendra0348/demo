@@ -10,172 +10,176 @@ const { sendWelcomeEmail } = require('../services/emailService');
 
 // Subscribe to newsletter
 router.post('/subscribe', async (req, res) => {
-  try {
-    const { email, source = 'footer' } = req.body;
-
-    // Validate email
-    if (!email || !validator.isEmail(email)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please provide a valid email address'
-      });
-    }
-
-    const normalizedEmail = email.toLowerCase().trim();
-
-    // Check if email already exists
-    const subscribersRef = db.collection('newsletter');
-    const existingDoc = await subscribersRef.doc(normalizedEmail).get();
-
-    if (existingDoc.exists) {
-      const data = existingDoc.data();
-      
-      if (data.isActive) {
-        // Already subscribed and active
-        return res.status(200).json({
-          success: true,
-          message: "You're already part of our community! 🎉 Stay tuned for exciting updates!",
-          alreadySubscribed: true
-        });
-      } else {
-        // Reactivate subscription
-        await subscribersRef.doc(normalizedEmail).update({
-          isActive: true,
-          resubscribedAt: new Date().toISOString(),
-          source: source
-        });
-
-        // Send welcome email
         try {
-          await sendWelcomeEmail(normalizedEmail, source);
-        } catch (emailError) {
-          console.error('Email sending failed:', emailError.message);
+                const { email, source = 'footer' } = req.body;
+
+                // Validate email
+                if (!email || !validator.isEmail(email)) {
+                        return res.status(400).json({
+                                success: false,
+                                message: 'Please provide a valid email address'
+                        });
+                }
+
+                const normalizedEmail = email.toLowerCase().trim();
+
+                // Check if email already exists
+                const subscribersRef = db.collection('newsletter');
+                const existingDoc = await subscribersRef.doc(normalizedEmail).get();
+
+                if (existingDoc.exists) {
+                        const data = existingDoc.data();
+
+                        if (data.isActive) {
+                                // Already subscribed and active
+                                return res.status(200).json({
+                                        success: true,
+                                        message: "You're already part of our community! 🎉 Stay tuned for exciting updates!",
+                                        alreadySubscribed: true
+                                });
+                        } else {
+                                // Reactivate subscription
+                                await subscribersRef.doc(normalizedEmail).update({
+                                        isActive: true,
+                                        resubscribedAt: new Date().toISOString(),
+                                        source: source
+                                });
+
+                                // Send response immediately
+                                res.status(200).json({
+                                        success: true,
+                                        message: 'Welcome back! 🎉 Your subscription has been reactivated!'
+                                });
+
+                                // Send welcome email asynchronously (non-blocking)
+                                setImmediate(() => {
+                                        sendWelcomeEmail(normalizedEmail, source)
+                                                .then(() => console.log(`✅ Welcome email queued for ${normalizedEmail}`))
+                                                .catch(err => console.error('Email sending failed:', err.message));
+                                });
+
+                                return;
+                        }
+                }
+
+                // Create new subscription
+                const subscriberData = {
+                        email: normalizedEmail,
+                        subscribedAt: new Date().toISOString(),
+                        isActive: true,
+                        source: source,
+                        ipAddress: req.ip || req.connection.remoteAddress || null,
+                        userAgent: req.get('user-agent') || null
+                };
+
+                await subscribersRef.doc(normalizedEmail).set(subscriberData);
+
+                // Send response immediately to user
+                res.status(201).json({
+                        success: true,
+                        message: 'Thank you for subscribing! 🎉 Check your email for a warm welcome!'
+                });
+
+                // Send welcome email asynchronously (non-blocking)
+                // This runs in background and doesn't slow down the response
+                setImmediate(() => {
+                        sendWelcomeEmail(normalizedEmail, source)
+                                .then(() => console.log(`✅ Welcome email queued for ${normalizedEmail}`))
+                                .catch(err => console.error('Email sending failed:', err.message));
+                });
+
+        } catch (error) {
+                console.error('Newsletter subscription error:', error);
+                res.status(500).json({
+                        success: false,
+                        message: 'Failed to subscribe. Please try again later.'
+                });
         }
-
-        return res.status(200).json({
-          success: true,
-          message: 'Welcome back! 🎉 Your subscription has been reactivated!'
-        });
-      }
-    }
-
-    // Create new subscription
-    const subscriberData = {
-      email: normalizedEmail,
-      subscribedAt: new Date().toISOString(),
-      isActive: true,
-      source: source,
-      ipAddress: req.ip || req.connection.remoteAddress || null,
-      userAgent: req.get('user-agent') || null
-    };
-
-    await subscribersRef.doc(normalizedEmail).set(subscriberData);
-
-    // Send welcome email (non-blocking)
-    try {
-      await sendWelcomeEmail(normalizedEmail, source);
-    } catch (emailError) {
-      console.error('Email sending failed:', emailError.message);
-      // Don't fail the subscription if email fails
-    }
-
-    res.status(201).json({
-      success: true,
-      message: 'Thank you for subscribing! 🎉 Check your email for a warm welcome!'
-    });
-
-  } catch (error) {
-    console.error('Newsletter subscription error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to subscribe. Please try again later.'
-    });
-  }
 });
 
 // Unsubscribe from newsletter
 router.post('/unsubscribe', async (req, res) => {
-  try {
-    const { email } = req.body;
+        try {
+                const { email } = req.body;
 
-    if (!email || !validator.isEmail(email)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please provide a valid email address'
-      });
-    }
+                if (!email || !validator.isEmail(email)) {
+                        return res.status(400).json({
+                                success: false,
+                                message: 'Please provide a valid email address'
+                        });
+                }
 
-    const normalizedEmail = email.toLowerCase().trim();
-    const subscribersRef = db.collection('newsletter');
-    const docRef = subscribersRef.doc(normalizedEmail);
-    const doc = await docRef.get();
+                const normalizedEmail = email.toLowerCase().trim();
+                const subscribersRef = db.collection('newsletter');
+                const docRef = subscribersRef.doc(normalizedEmail);
+                const doc = await docRef.get();
 
-    if (!doc.exists) {
-      return res.status(404).json({
-        success: false,
-        message: 'Email not found in our newsletter list'
-      });
-    }
+                if (!doc.exists) {
+                        return res.status(404).json({
+                                success: false,
+                                message: 'Email not found in our newsletter list'
+                        });
+                }
 
-    await docRef.update({
-      isActive: false,
-      unsubscribedAt: new Date().toISOString()
-    });
+                await docRef.update({
+                        isActive: false,
+                        unsubscribedAt: new Date().toISOString()
+                });
 
-    res.json({
-      success: true,
-      message: 'You have been successfully unsubscribed'
-    });
+                res.json({
+                        success: true,
+                        message: 'You have been successfully unsubscribed'
+                });
 
-  } catch (error) {
-    console.error('Newsletter unsubscribe error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to unsubscribe. Please try again later.'
-    });
-  }
+        } catch (error) {
+                console.error('Newsletter unsubscribe error:', error);
+                res.status(500).json({
+                        success: false,
+                        message: 'Failed to unsubscribe. Please try again later.'
+                });
+        }
 });
 
 // Get all subscribers (admin only)
 router.get('/subscribers', async (req, res) => {
-  try {
-    const { page = 1, limit = 50, active = 'true' } = req.query;
-    const isActive = active === 'true';
+        try {
+                const { page = 1, limit = 50, active = 'true' } = req.query;
+                const isActive = active === 'true';
 
-    const subscribersRef = db.collection('newsletter');
-    let query = subscribersRef.where('isActive', '==', isActive);
-    
-    const snapshot = await query.orderBy('subscribedAt', 'desc').get();
-    
-    const subscribers = [];
-    snapshot.forEach(doc => {
-      subscribers.push({
-        id: doc.id,
-        ...doc.data()
-      });
-    });
+                const subscribersRef = db.collection('newsletter');
+                let query = subscribersRef.where('isActive', '==', isActive);
 
-    // Simple pagination
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    const paginatedSubscribers = subscribers.slice(startIndex, endIndex);
+                const snapshot = await query.orderBy('subscribedAt', 'desc').get();
 
-    res.json({
-      success: true,
-      count: paginatedSubscribers.length,
-      total: subscribers.length,
-      page: parseInt(page),
-      totalPages: Math.ceil(subscribers.length / limit),
-      data: paginatedSubscribers
-    });
+                const subscribers = [];
+                snapshot.forEach(doc => {
+                        subscribers.push({
+                                id: doc.id,
+                                ...doc.data()
+                        });
+                });
 
-  } catch (error) {
-    console.error('Get subscribers error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to fetch subscribers'
-    });
-  }
+                // Simple pagination
+                const startIndex = (page - 1) * limit;
+                const endIndex = page * limit;
+                const paginatedSubscribers = subscribers.slice(startIndex, endIndex);
+
+                res.json({
+                        success: true,
+                        count: paginatedSubscribers.length,
+                        total: subscribers.length,
+                        page: parseInt(page),
+                        totalPages: Math.ceil(subscribers.length / limit),
+                        data: paginatedSubscribers
+                });
+
+        } catch (error) {
+                console.error('Get subscribers error:', error);
+                res.status(500).json({
+                        success: false,
+                        message: 'Failed to fetch subscribers'
+                });
+        }
 });
 
 module.exports = router;
