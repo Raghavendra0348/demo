@@ -63,24 +63,24 @@ const About = () => {
                                         </div>
                                 </div>
 
-                                <div className="row mt-5">
-                                        <div className="col-12 text-center">
-                                                <div className="stats-container d-flex justify-content-around flex-wrap gap-4 py-4">
-                                                        <div className="stat-item">
-                                                                <h3 className="display-4 fw-bold" style={{ color: 'var(--primary-color)' }}>10K+</h3>
-                                                                <p className="text-muted">Early Subscribers</p>
-                                                        </div>
-                                                        <div className="stat-item">
-                                                                <h3 className="display-4 fw-bold" style={{ color: 'var(--primary-color)' }}>500+</h3>
-                                                                <p className="text-muted">Creators Ready</p>
-                                                        </div>
-                                                        <div className="stat-item">
-                                                                <h3 className="display-4 fw-bold" style={{ color: 'var(--primary-color)' }}>1000+</h3>
-                                                                <p className="text-muted">Products Listed</p>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </div>
+                                // <div className="row mt-5">
+                                //         <div className="col-12 text-center">
+                                //                 <div className="stats-container d-flex justify-content-around flex-wrap gap-4 py-4">
+                                //                         <div className="stat-item">
+                                //                                 <h3 className="display-4 fw-bold" style={{ color: 'var(--primary-color)' }}>10K+</h3>
+                                //                                 <p className="text-muted">Early Subscribers</p>
+                                //                         </div>
+                                //                         <div className="stat-item">
+                                //                                 <h3 className="display-4 fw-bold" style={{ color: 'var(--primary-color)' }}>500+</h3>
+                                //                                 <p className="text-muted">Creators Ready</p>
+                                //                         </div>
+                                //                         <div className="stat-item">
+                                //                                 <h3 className="display-4 fw-bold" style={{ color: 'var(--primary-color)' }}>1000+</h3>
+                                //                                 <p className="text-muted">Products Listed</p>
+                                //                         </div>
+                                //                 </div>
+                                //         </div>
+                                // </div>
                         </div>
                 </section>
         );
