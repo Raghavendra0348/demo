@@ -63,7 +63,7 @@ const About = () => {
                                         </div>
                                 </div>
 
-                              /*  <div className="row mt-5">
+{/*  <div className="row mt-5">
                                         <div className="col-12 text-center">
                                                 <div className="stats-container d-flex justify-content-around flex-wrap gap-4 py-4">
                                                         <div className="stat-item">
@@ -80,7 +80,7 @@ const About = () => {
                                                         </div>
                                                 </div>
                                         </div>
-                                </div> */
+                                </div> */}
                         </div>
                 </section>
         );
