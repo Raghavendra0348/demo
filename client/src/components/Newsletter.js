@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import './Newsletter.css';
 
 const Newsletter = ({ source = 'footer' }) => {
         const [email, setEmail] = useState('');
         const [loading, setLoading] = useState(false);
         const [message, setMessage] = useState('');
+        const [isFocused, setIsFocused] = useState(false);
 
         const handleSubmit = async (e) => {
                 e.preventDefault();
@@ -23,11 +25,10 @@ const Newsletter = ({ source = 'footer' }) => {
                         const data = await response.json();
 
                         if (data.success) {
-                                // Show positive message with appropriate emoji
                                 const emoji = data.alreadySubscribed ? '🌸' : '🎉';
                                 setMessage(`${emoji} ${data.message}`);
                                 if (!data.alreadySubscribed) {
-                                        setEmail(''); // Only clear email for new subscriptions
+                                        setEmail('');
                                 }
                         } else {
                                 setMessage('❌ ' + data.message);
@@ -40,33 +41,42 @@ const Newsletter = ({ source = 'footer' }) => {
         };
 
         return (
-                <div className="newsletter-section">
-                        <form onSubmit={handleSubmit}>
-                                <div className="input-group">
+                <div className={`newsletter-wrapper ${isFocused ? 'focused' : ''}`}>
+                        <div className="newsletter-glow"></div>
+                        <form onSubmit={handleSubmit} className="newsletter-form">
+                                <div className="newsletter-input-group">
+                                        <div className="input-icon">
+                                                <i className="fas fa-envelope"></i>
+                                        </div>
                                         <input
                                                 type="email"
-                                                className="form-control newsletter-input"
-                                                placeholder="Enter your email"
+                                                className="newsletter-input"
+                                                placeholder="Enter your email address"
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
+                                                onFocus={() => setIsFocused(true)}
+                                                onBlur={() => setIsFocused(false)}
                                                 required
                                                 disabled={loading}
                                         />
                                         <button
-                                                className="btn newsletter-btn"
+                                                className="newsletter-submit"
                                                 type="submit"
                                                 disabled={loading}
                                         >
                                                 {loading ? (
                                                         <i className="fas fa-spinner fa-spin"></i>
                                                 ) : (
-                                                        <i className="fas fa-paper-plane"></i>
+                                                        <>
+                                                                <span className="btn-text">Subscribe</span>
+                                                                <i className="fas fa-arrow-right btn-icon"></i>
+                                                        </>
                                                 )}
                                         </button>
                                 </div>
                         </form>
                         {message && (
-                                <div className={`alert ${message.includes('❌') ? 'alert-danger' : 'alert-success'} mt-3`}>
+                                <div className={`newsletter-message ${message.includes('❌') ? 'error' : 'success'}`}>
                                         {message}
                                 </div>
                         )}

@@ -1,0 +1,342 @@
+/* ============================================
+   FOOTER SECTION - MODERN DARK THEME
+   ============================================ */
+
+.footer-section {
+        position: relative;
+        background: linear-gradient(180deg, #16213e 0%, #0a0a14 100%);
+        padding-top: 100px;
+        overflow: hidden;
+}
+
+/* Background Elements */
+.footer-bg-elements {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+}
+
+.footer-gradient-orb {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+}
+
+.footer-grid-pattern {
+        position: absolute;
+        inset: 0;
+        background-image:
+                linear-gradient(rgba(168, 85, 247, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.02) 1px, transparent 1px);
+        background-size: 80px 80px;
+        mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+}
+
+/* Footer Main */
+.footer-main {
+        position: relative;
+        padding-bottom: 60px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Brand Section */
+.footer-brand {
+        margin-bottom: 30px;
+}
+
+.brand-name {
+        font-family: 'Genty', sans-serif;
+        font-size: 2.5rem;
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+}
+
+.brand-description {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        max-width: 300px;
+        margin-bottom: 25px;
+}
+
+/* Social Links */
+.social-links {
+        display: flex;
+        gap: 12px;
+}
+
+.social-link {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+}
+
+.social-link:hover {
+        background: rgba(168, 85, 247, 0.2);
+        border-color: rgba(168, 85, 247, 0.4);
+        color: #a855f7;
+        transform: translateY(-3px);
+}
+
+/* Footer Headings */
+.footer-heading {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+}
+
+/* Footer Links */
+.footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+}
+
+.footer-links li {
+        margin-bottom: 12px;
+}
+
+.footer-link {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+}
+
+.footer-link:hover {
+        color: #a855f7;
+        transform: translateX(5px);
+}
+
+/* Newsletter Column */
+.newsletter-text {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        line-height: 1.6;
+}
+
+/* Contact Info */
+.contact-info {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+}
+
+.contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+}
+
+.contact-item:hover {
+        color: #a855f7;
+}
+
+.contact-item i {
+        width: 20px;
+        color: #a855f7;
+}
+
+/* App Download Banner */
+.app-download-banner {
+        background: rgba(42, 42, 78, 0.3);
+        border: 1px solid rgba(168, 85, 247, 0.15);
+        border-radius: 20px;
+        padding: 30px 40px;
+        margin: 40px 0;
+        backdrop-filter: blur(10px);
+}
+
+.banner-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+}
+
+.banner-text h6 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 5px;
+}
+
+.banner-text p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        margin: 0;
+}
+
+.banner-buttons {
+        display: flex;
+        gap: 15px;
+}
+
+.app-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+}
+
+.app-btn:hover {
+        background: rgba(168, 85, 247, 0.15);
+        border-color: rgba(168, 85, 247, 0.4);
+        transform: translateY(-3px);
+}
+
+.app-btn i {
+        font-size: 1.5rem;
+}
+
+.app-btn .btn-text {
+        text-align: left;
+}
+
+.app-btn .btn-text small {
+        display: block;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+}
+
+.app-btn .btn-text span {
+        font-size: 1rem;
+        font-weight: 600;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+        padding: 30px 0;
+}
+
+.copyright {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.85rem;
+        margin: 0;
+}
+
+.legal-links {
+        display: flex;
+        gap: 25px;
+        justify-content: flex-end;
+}
+
+.legal-links a {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+        color: #a855f7;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 991px) {
+        .footer-section {
+                padding-top: 70px;
+        }
+
+        .banner-content {
+                flex-direction: column;
+                text-align: center;
+        }
+
+        .legal-links {
+                justify-content: center;
+        }
+}
+
+@media (max-width: 767px) {
+        .footer-main {
+                padding-bottom: 40px;
+        }
+
+        .brand-description {
+                max-width: 100%;
+        }
+
+        .social-links {
+                justify-content: flex-start;
+        }
+
+        .app-download-banner {
+                padding: 25px 20px;
+        }
+
+        .banner-buttons {
+                flex-direction: column;
+                width: 100%;
+        }
+
+        .app-btn {
+                justify-content: center;
+                width: 100%;
+        }
+
+        .footer-bottom {
+                text-align: center;
+        }
+
+        .legal-links {
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+                margin-top: 15px;
+        }
+}
+
+@media (max-width: 575px) {
+        .footer-heading {
+                font-size: 0.85rem;
+                margin-bottom: 15px;
+        }
+
+        .footer-links li {
+                margin-bottom: 10px;
+        }
+
+        .brand-name {
+                font-size: 2rem;
+        }
+}

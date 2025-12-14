@@ -1,0 +1,179 @@
+/* ============================================
+   NEWSLETTER COMPONENT - MODERN DARK THEME
+   ============================================ */
+
+.newsletter-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+}
+
+.newsletter-glow {
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #3b82f6 100%);
+        border-radius: 18px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        filter: blur(8px);
+        z-index: -1;
+}
+
+.newsletter-wrapper.focused .newsletter-glow {
+        opacity: 0.5;
+}
+
+.newsletter-form {
+        position: relative;
+}
+
+.newsletter-input-group {
+        display: flex;
+        align-items: center;
+        background: rgba(42, 42, 78, 0.6);
+        border: 1px solid rgba(168, 85, 247, 0.2);
+        border-radius: 16px;
+        padding: 6px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+}
+
+.newsletter-wrapper.focused .newsletter-input-group {
+        border-color: rgba(168, 85, 247, 0.5);
+        background: rgba(42, 42, 78, 0.8);
+        box-shadow: 0 10px 40px rgba(168, 85, 247, 0.15);
+}
+
+.input-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        color: rgba(168, 85, 247, 0.7);
+        font-size: 1rem;
+        flex-shrink: 0;
+}
+
+.newsletter-input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 0.95rem;
+        padding: 12px 10px;
+        outline: none;
+}
+
+.newsletter-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-input:disabled {
+        opacity: 0.6;
+}
+
+.newsletter-submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+        border: none;
+        border-radius: 12px;
+        padding: 12px 24px;
+        color: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        white-space: nowrap;
+}
+
+.newsletter-submit:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+}
+
+.newsletter-submit:active:not(:disabled) {
+        transform: translateY(0);
+}
+
+.newsletter-submit:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+}
+
+.newsletter-submit .btn-icon {
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+}
+
+.newsletter-submit:hover:not(:disabled) .btn-icon {
+        transform: translateX(4px);
+}
+
+/* Message Styles */
+.newsletter-message {
+        margin-top: 15px;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        animation: slideIn 0.3s ease;
+}
+
+.newsletter-message.success {
+        background: rgba(34, 197, 94, 0.15);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #86efac;
+}
+
+.newsletter-message.error {
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+}
+
+@keyframes slideIn {
+        from {
+                opacity: 0;
+                transform: translateY(-10px);
+        }
+
+        to {
+                opacity: 1;
+                transform: translateY(0);
+        }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 575px) {
+        .newsletter-input-group {
+                flex-wrap: wrap;
+                padding: 10px;
+                gap: 10px;
+        }
+
+        .input-icon {
+                display: none;
+        }
+
+        .newsletter-input {
+                width: 100%;
+                padding: 12px 15px;
+                text-align: center;
+        }
+
+        .newsletter-submit {
+                width: 100%;
+                padding: 14px;
+                justify-content: center;
+        }
+
+        .btn-text {
+                display: inline;
+        }
+}
